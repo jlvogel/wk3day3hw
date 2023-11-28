@@ -67,9 +67,15 @@
 
 "use strict";  // throws an error if you try to assign a different
                // value to property whose writable property is set to false
+// const country = "USA"
 
 class Governor {
-  static country = "USA";
+  // static country = "USA"
+  // now if I don't want to be able to change the country
+  // at the class level then what?
+
+  static get country(){return "USA"} // now cannot change at the class level!
+
   constructor (state) {
     // "use strict";                 
     this.country = Governor.country;
@@ -96,3 +102,8 @@ console.log(joshShapiro)
 // then throw an error?  try it!
 
 // it works!  "use strict";
+
+console.log(Governor.country)
+// Governor.country = "Nigeria";     // We can change country like this, however!
+const tinaKotek = new Governor('Oregon')
+console.log(tinaKotek)

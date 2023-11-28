@@ -65,13 +65,34 @@
 // BUT it looks like a static property / method could be used in the CREATION
 // of an instance?  (I think).  
 
+"use strict";  // throws an error if you try to assign a different
+               // value to property whose writable property is set to false
+
 class Governor {
   static country = "USA";
   constructor (state) {
-    this.country = Governor.country; // ensure's every governor instance
-                                     // country is USA
+    // "use strict";                 
+    this.country = Governor.country;
+    Object.defineProperty(this, 'country', {
+       value: Governor.country, // ensure's every governor instance
+                                // country is USA
+       writable: false,         // ensures the country cannot change
+    });
     this.state = state;
   }
 }
 const joshShapiro = new Governor('Pennsylvania')
 console.log(joshShapiro.country);
+
+// joshShapiro.country = "Nigeria"; // will not work
+// joshShapiro['country'] = "Nigeria"; // also does not work
+console.log(joshShapiro)
+joshShapiro.state = "New Mexico" // this is ok
+console.log(joshShapiro)
+
+
+// why does assigning a value not throw an error than?
+// after more research realize that 'use strict'; might
+// then throw an error?  try it!
+
+// it works!  "use strict";

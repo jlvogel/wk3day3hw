@@ -130,7 +130,17 @@ class Governor {
       "Wisconsin",
       "Wyoming",
     ];
-  }
+
+    static checkStateIsValid = (state)=>{
+      for(let stateName of Governor.validStateNameArray) {
+        console.log(state, stateName)
+        if (state == stateName) {
+          // console.log("true!!")
+          return true
+        }
+      }
+      return false
+    }
 
   constructor (name, state, party, dateOfBirth, inaugurationDate) {
     // "use strict";                 
@@ -141,21 +151,35 @@ class Governor {
        writable: false,         // ensures the country cannot change
     });
     this.name = name;
-    this.state = state;
+
+    
+    if(Governor.checkStateIsValid(state) == true){
+      this.state = state;
+    } else {
+      console.log("state is invalid!")
+      this.state = "INVALID!!!!"
+    }
     // add code here to make sure state is valid!
+    // but also there can only be one governor in each state
+    // so need to check to make sure there isn't a governor
+    // already there!!
+    // I finally understand the problem statement!
+
     this.party = party;
     this.dateOfBirth = dateOfBirth;
     this.inaugurationDate = inaugurationDate;
   }
 }
-const joshShapiro = new Governor('Pennsylvania')
-console.log(joshShapiro.country);
+const joshShapiro = new Governor('Josh Shapiro',"Pennsylvania",
+                                 'Democratic', '06/20/1973', 
+                                 '01/17/2023')
+// console.log(joshShapiro.country);
 
 // joshShapiro.country = "Nigeria"; // will not work
 // joshShapiro['country'] = "Nigeria"; // also does not work
 console.log(joshShapiro)
-joshShapiro.state = "New Mexico" // this is ok
-console.log(joshShapiro)
+// joshShapiro.state = "New Mexico" // this is ok
+// console.log(joshShapiro)
 
 
 // why does assigning a value not throw an error than?
@@ -164,8 +188,8 @@ console.log(joshShapiro)
 
 // it works!  "use strict";
 
-console.log(Governor.country)
+// console.log(Governor.country)
 // Governor.country = "Nigeria";     // We can change country like this, however!
 //... not anymore!
-const tinaKotek = new Governor('Oregon')
-console.log(tinaKotek)
+// const tinaKotek = new Governor('Oregon')
+// console.log(tinaKotek)

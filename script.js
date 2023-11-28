@@ -45,8 +45,33 @@
 // but 2 governors might be in the Southwest, or one might be in the North, and
 // another might be in the Southeast. or Midwest.
 
+// so a region compare method.  - great we thought of one method for a governor
+// class....
 
+// a party member method might be another good class method.
+// we could list all governors in certain regions.  or list governors 
+// that are only Democrat
+
+// I believe these would be considered utility purposes.  Something
+// I have found to be a common purpose for static methods.
+
+// ok now for static properties, one reason for this would
+// be for a property that would be common in ALL instances.
+// I suppose one property common to all governors is that the country they
+// serve is the USA.  so the country could be a static property?
+
+// but a static property is one that is not available to a particular instance.
+
+// BUT it looks like a static property / method could be used in the CREATION
+// of an instance?  (I think).  
 
 class Governor {
-
+  static country = "USA";
+  constructor (state) {
+    this.country = Governor.country; // ensure's every governor instance
+                                     // country is USA
+    this.state = state;
+  }
 }
+const joshShapiro = new Governor('Pennsylvania')
+console.log(joshShapiro.country);

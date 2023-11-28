@@ -25,6 +25,26 @@
 
 // hmmmmmmmmmmmmmmmm
 
+// .... after some more researching on static methods and properties
+// need to review a little more.
+
+// how about a static property for political party that only
+// allows a governor to have possiblity of Republican, Democrat, Independent,
+// Libertarian, Green, or other?
+
+// I'm not sure if that's a good example or not right now
+// But a method to COMPARE governor's might be a good reason to define
+// a static method for a class.
+
+// We could compare the election dates of governors, for example.
+// To answer a question of how much longer a certain governor has held
+// office than other one, for example.
+
+// Another thing we could compare is the GENERAL location that
+// a governor is located in.  Obviously they are located in different states
+// but 2 governors might be in the Southwest, or one might be in the North, and
+// another might be in the Southeast. or Midwest.
+
 
 
 class Governor {

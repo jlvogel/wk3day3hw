@@ -69,6 +69,8 @@
                // value to property whose writable property is set to false
 // const country = "USA"
 
+
+
 class Governor {
   // static country = "USA"
   // now if I don't want to be able to change the country
@@ -131,16 +133,24 @@ class Governor {
       "Wyoming",
     ];
 
-    static checkStateIsValid = (state)=>{
-      for(let stateName of Governor.validStateNameArray) {
-        console.log(state, stateName)
-        if (state == stateName) {
-          // console.log("true!!")
-          return true
-        }
+  static checkStateIsValid = (state)=>{
+    for(let stateName of Governor.validStateNameArray) {
+      // console.log(state, stateName)
+      if (state == stateName) {
+        // console.log("true!!")
+        return true
       }
-      return false
     }
+    return false
+  }
+
+  // need to get a list of all governors....
+
+  static #id = 0;
+
+  static #incrementID() {
+      this.#id++; 
+  }
 
   constructor (name, state, party, dateOfBirth, inaugurationDate) {
     // "use strict";                 
@@ -159,15 +169,22 @@ class Governor {
       console.log("state is invalid!")
       this.state = "INVALID!!!!"
     }
+    this.party = party;
+    this.dateOfBirth = dateOfBirth;
+    this.inaugurationDate = inaugurationDate;
+    
+        
     // add code here to make sure state is valid!
     // but also there can only be one governor in each state
     // so need to check to make sure there isn't a governor
     // already there!!
     // I finally understand the problem statement!
 
-    this.party = party;
-    this.dateOfBirth = dateOfBirth;
-    this.inaugurationDate = inaugurationDate;
+    // to check if a governor is already in a state,
+    // we need to create a function that lists all governors.
+    Governor.#incrementID();
+    this.id = Governor.#id;
+
   }
 }
 const joshShapiro = new Governor('Josh Shapiro',"Pennsylvania",
@@ -191,5 +208,9 @@ console.log(joshShapiro)
 // console.log(Governor.country)
 // Governor.country = "Nigeria";     // We can change country like this, however!
 //... not anymore!
-// const tinaKotek = new Governor('Oregon')
-// console.log(tinaKotek)
+const tinaKotek = new Governor('Tina Kotek',"Oregon",
+                               'Democratic', '09/30/1966', 
+                               '01/09/2023')
+console.log(tinaKotek)
+
+// console.log(Governor.allGovernors)

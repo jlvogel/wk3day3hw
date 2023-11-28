@@ -146,10 +146,16 @@ class Governor {
 
   // need to get a list of all governors....
 
-  static #id = 0;
+  static #id = 0;  // the # means this is private to the class (cannot be accessed outside of class)
 
   static #incrementID() {
       this.#id++; 
+  }
+
+  static governorList = [];
+
+  static #pushNewGovernorIntoList(newGovernor) {
+    this.governorList.push(newGovernor);
   }
 
   constructor (name, state, party, dateOfBirth, inaugurationDate) {
@@ -184,7 +190,12 @@ class Governor {
     // we need to create a function that lists all governors.
     Governor.#incrementID();
     this.id = Governor.#id;
-
+    // It works!  Ok we have a little way to go to create a list
+    // that contains all governor objects but this is a great
+    // start.  We can increment something every time a new object
+    // is created.  So let's try pushing the new Governor object
+    // to a blank array instead!
+    Governor.#pushNewGovernorIntoList(this);
   }
 }
 const joshShapiro = new Governor('Josh Shapiro',"Pennsylvania",
@@ -214,3 +225,5 @@ const tinaKotek = new Governor('Tina Kotek',"Oregon",
 console.log(tinaKotek)
 
 // console.log(Governor.allGovernors)
+
+console.log(Governor.governorList);

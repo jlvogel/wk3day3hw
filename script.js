@@ -74,9 +74,65 @@ class Governor {
   // now if I don't want to be able to change the country
   // at the class level then what?
 
-  static get country(){return "USA"} // now cannot change at the class level!
+  static get country(){return "USA"}; // now cannot change at the class level!
 
-  constructor (state) {
+  // how about a property that is all valid States a governor could have
+
+  static validStateNameArray = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ];
+  }
+
+  constructor (name, state, party, dateOfBirth, inaugurationDate) {
     // "use strict";                 
     this.country = Governor.country;
     Object.defineProperty(this, 'country', {
@@ -84,7 +140,12 @@ class Governor {
                                 // country is USA
        writable: false,         // ensures the country cannot change
     });
+    this.name = name;
     this.state = state;
+    // add code here to make sure state is valid!
+    this.party = party;
+    this.dateOfBirth = dateOfBirth;
+    this.inaugurationDate = inaugurationDate;
   }
 }
 const joshShapiro = new Governor('Pennsylvania')
@@ -105,5 +166,6 @@ console.log(joshShapiro)
 
 console.log(Governor.country)
 // Governor.country = "Nigeria";     // We can change country like this, however!
+//... not anymore!
 const tinaKotek = new Governor('Oregon')
 console.log(tinaKotek)

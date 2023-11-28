@@ -158,6 +158,15 @@ class Governor {
     this.governorList.push(newGovernor);
   }
 
+  static #ensureOnlyOneGovernorPerState(state) {
+    for (let governor of this.governorList.slice(0,-1)){
+      if(governor.state == state) {
+        // found a duplicate number
+        console.log("There is already a governor in " + state + "!")
+      }
+    }
+  }
+
   constructor (name, state, party, dateOfBirth, inaugurationDate) {
     // "use strict";                 
     this.country = Governor.country;
@@ -196,6 +205,14 @@ class Governor {
     // is created.  So let's try pushing the new Governor object
     // to a blank array instead!
     Governor.#pushNewGovernorIntoList(this);
+    // Sweet!
+    // Now need to add a function to check to make sure a governor
+    // isn't already in the state that anyone tries to add.
+
+    // Governor
+
+    Governor.#ensureOnlyOneGovernorPerState(state);
+
   }
 }
 const joshShapiro = new Governor('Josh Shapiro',"Pennsylvania",
@@ -205,7 +222,7 @@ const joshShapiro = new Governor('Josh Shapiro',"Pennsylvania",
 
 // joshShapiro.country = "Nigeria"; // will not work
 // joshShapiro['country'] = "Nigeria"; // also does not work
-console.log(joshShapiro)
+// console.log(joshShapiro)
 // joshShapiro.state = "New Mexico" // this is ok
 // console.log(joshShapiro)
 
@@ -219,11 +236,11 @@ console.log(joshShapiro)
 // console.log(Governor.country)
 // Governor.country = "Nigeria";     // We can change country like this, however!
 //... not anymore!
-const tinaKotek = new Governor('Tina Kotek',"Oregon",
+const tinaKotek = new Governor('Tina Kotek',"Pennsylvania",
                                'Democratic', '09/30/1966', 
                                '01/09/2023')
-console.log(tinaKotek)
+// console.log(tinaKotek)
 
 // console.log(Governor.allGovernors)
 
-console.log(Governor.governorList);
+// console.log(Governor.governorList);

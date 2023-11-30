@@ -133,7 +133,7 @@ class Governor {
       "Wyoming",
     ];
 
-  static checkStateIsValid = (state)=>{
+  static #checkStateIsValid = (state)=>{
     for(let stateName of Governor.validStateNameArray) {
       // console.log(state, stateName)
       if (state == stateName) {
@@ -178,7 +178,7 @@ class Governor {
     this.name = name;
 
     
-    if(Governor.checkStateIsValid(state) == true){
+    if(Governor.#checkStateIsValid(state) == true){
       this.state = state;
     } else {
       console.log("state is invalid!")
@@ -244,3 +244,46 @@ const tinaKotek = new Governor('Tina Kotek',"Pennsylvania",
 // console.log(Governor.allGovernors)
 
 // console.log(Governor.governorList);
+
+
+
+// Inheritance
+// Your base class
+
+// Person{
+//     constructor(){
+
+//     }
+// }
+// Think of three properties all people share, set them with the constructor
+// Think of three methods all people share
+// Create a PostalWorker class that inherits from person, add some methods
+// Create a Chef class that inherits from person, add some methods
+// Create 2 PostalWorkers and 2 Chefs, log them and test all their methods
+
+
+class Person {
+  constructor(name, dateOfBirth, eyeColor){
+    this.name = name
+    this.dateOfBirth = dateOfBirth
+    this.eyeColor = eyeColor
+  }
+  talk(){console.log("Blah blah blah")}
+  think(){console.log("Hmmmmmmmm")}
+  eat(){console.log("Munch munch munch")}
+}
+
+const george = new Person("George", "05/06/1988", "Blue")
+console.log(george)
+george.talk()
+george.think()
+george.eat()
+
+class Chef extends Person {
+  talk(){console.log("It's a meeeeeee  Mario!!")}
+}
+
+const mario = new Chef("Mario", "01/01/1985", "Brown")
+console.log(mario)
+
+

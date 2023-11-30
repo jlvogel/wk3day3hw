@@ -280,7 +280,7 @@ george.think()
 george.eat()
 
 class Chef extends Person {
-  talk(){console.log("It's a meeeeeee  Mario!!")}
+  talk(){console.log(`It's a meeeeeee ${this.name}!!`)}
   jump(){console.log("I'm jumping!")}
   makeSpaghetti(){console.log("I'm making spaghetti")}
 }
@@ -296,3 +296,10 @@ mario.think()
 mario.eat()
 
 
+const luigi = new Chef("Luigi", "01/23/1984", "Brown")
+console.log(luigi)
+luigi.talk()
+luigi.jump()
+luigi.makeSpaghetti()
+luigi.think()
+luigi.eat()

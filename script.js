@@ -295,7 +295,6 @@ mario.makeSpaghetti()
 mario.think()
 mario.eat()
 
-
 const luigi = new Chef("Luigi", "01/23/1984", "Brown")
 console.log(luigi)
 luigi.talk()
@@ -303,3 +302,25 @@ luigi.jump()
 luigi.makeSpaghetti()
 luigi.think()
 luigi.eat()
+
+class PostalWorker extends Person {
+  stamp(){console.log ("stamp stamp stamp")}
+  talk(){console.log("You have mail")}
+  dodgeDogs(){console.log("Nice dogieee")}
+}
+
+const sam = new PostalWorker("Sam", "06/27/2000", "Green")
+console.log(sam)
+sam.stamp()
+sam.talk()
+sam.dodgeDogs()
+sam.think()
+sam.eat()
+
+const tom = new PostalWorker("Tom", "06/27/1999", "Hazel")
+console.log(tom)
+tom.stamp()
+tom.talk()
+tom.dodgeDogs()
+tom.think()
+tom.eat()

@@ -281,9 +281,18 @@ george.eat()
 
 class Chef extends Person {
   talk(){console.log("It's a meeeeeee  Mario!!")}
+  jump(){console.log("I'm jumping!")}
+  makeSpaghetti(){console.log("I'm making spaghetti")}
 }
+
+
 
 const mario = new Chef("Mario", "01/01/1985", "Brown")
 console.log(mario)
+mario.talk()
+mario.jump()
+mario.makeSpaghetti()
+mario.think()
+mario.eat()
 
 
